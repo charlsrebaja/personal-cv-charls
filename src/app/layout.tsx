@@ -5,11 +5,13 @@ import "./globals.css";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -31,6 +33,11 @@ export const metadata: Metadata = {
     "Django",
     "Java",
     "C++",
+    "PostgreSQL",
+    "NeonDB",
+    "Supabase",
+    "Prisma ORM",
+    "Cloudinary",
     "BlueWaste",
     "Panabo City",
     "Davao Web Developer",
@@ -79,7 +86,6 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.ico" },
       { url: "/icon.png", sizes: "256x256", type: "image/png" },
-      { url: "/profilepic.jpg", type: "image/jpeg" },
     ],
     apple: [
       { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
@@ -102,6 +108,7 @@ const jsonLd = {
       image: "https://charlsrebaja.dev/projects/profilepic.jpg",
       sameAs: [
         "https://github.com/charlsrebaja",
+        "https://www.facebook.com/charls.rebaja",
         "https://www.linkedin.com/in/charls-rebaja/",
       ],
       knowsAbout: [
@@ -116,7 +123,9 @@ const jsonLd = {
         "Java",
         "C++",
         "PostgreSQL",
+        "NeonDB",
         "Supabase",
+        "Prisma ORM",
         "Cloudinary",
       ],
     },
@@ -148,8 +157,6 @@ export default function RootLayout({
     >
       <head>
         <link rel="preconnect" href="https://www.google.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Anti-FOUC inline script to apply theme before render */}
         <Script
           id="theme-initializer"

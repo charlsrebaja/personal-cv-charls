@@ -8,10 +8,26 @@ export default function HeroCircuit() {
   const circleRef = useRef<SVGCircleElement>(null);
 
   useEffect(() => {
+    // Respect user's reduced motion preferences
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const container = containerRef.current;
+    if (!container) return;
+
     let rafId: number | null = null;
     let pendingX = 720;
     let pendingY = 450;
     let pendingHover = false;
+    let isVisible = false;
+    let cachedRect: DOMRect | null = null;
+
+    const updateRect = () => {
+      if (container) {
+        cachedRect = container.getBoundingClientRect();
+      }
+    };
 
     const updateSpotlight = () => {
       if (gradientRef.current) {
@@ -27,15 +43,17 @@ export default function HeroCircuit() {
     };
 
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
+      if (!isVisible) return;
+      if (!cachedRect) updateRect();
+      const rect = cachedRect;
+      if (!rect) return;
+
       if (
         e.clientX >= rect.left &&
         e.clientX <= rect.right &&
         e.clientY >= rect.top &&
         e.clientY <= rect.bottom
       ) {
-        // Map viewport coordinates to SVG 1440x900 coordinate space
         pendingX = ((e.clientX - rect.left) / rect.width) * 1440;
         pendingY = ((e.clientY - rect.top) / rect.height) * 900;
         pendingHover = true;
@@ -55,13 +73,43 @@ export default function HeroCircuit() {
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    window.addEventListener("mouseleave", handleMouseLeave);
+    // Attach listeners only when visible in viewport
+    const attachListeners = () => {
+      updateRect();
+      window.addEventListener("mousemove", handleMouseMove, { passive: true });
+      window.addEventListener("mouseleave", handleMouseLeave);
+      window.addEventListener("resize", updateRect, { passive: true });
+      window.addEventListener("scroll", updateRect, { passive: true });
+    };
 
-    return () => {
-      if (rafId) cancelAnimationFrame(rafId);
+    const detachListeners = () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("resize", updateRect);
+      window.removeEventListener("scroll", updateRect);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          attachListeners();
+        } else {
+          detachListeners();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(container);
+
+    return () => {
+      observer.disconnect();
+      detachListeners();
     };
   }, []);
 

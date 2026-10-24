@@ -86,10 +86,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             src={project.image}
             alt={`${project.title} Interface Preview`}
             fill
-            className="object-cover"
+            className="object-cover object-top"
             priority
+            unoptimized
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
           <div className="absolute bottom-3 left-3 px-3 py-1 rounded-md bg-slate-900/90 border border-slate-700/80 text-xs font-mono text-cyan-300 flex items-center gap-1.5">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
             <span>Primary Framework: {project.primaryFramework}</span>

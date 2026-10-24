@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { Menu, X, Code2, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/icons/BrandIcons";
@@ -10,7 +10,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const progressBarRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ticking = false;
@@ -19,12 +19,14 @@ export default function Navbar() {
       if (!ticking) {
         requestAnimationFrame(() => {
           const currentY = window.scrollY;
-          setScrolled(currentY > 20);
+          const isNowScrolled = currentY > 20;
+          setScrolled((prev) => (prev !== isNowScrolled ? isNowScrolled : prev));
 
-          // Calculate overall page scroll progress (0 - 100%)
+          // Directly update GPU-accelerated progress bar without triggering React re-renders
           const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-          if (docHeight > 0) {
-            setScrollProgress(Math.min(100, Math.max(0, (currentY / docHeight) * 100)));
+          if (progressBarRef.current && docHeight > 0) {
+            const ratio = Math.min(1, Math.max(0, currentY / docHeight));
+            progressBarRef.current.style.transform = `scaleX(${ratio})`;
           }
 
           // Section spy
@@ -37,7 +39,7 @@ export default function Navbar() {
               const top = el.offsetTop;
               const height = el.offsetHeight;
               if (scrollPosition >= top && scrollPosition < top + height) {
-                setActiveSection(section);
+                setActiveSection((prev) => (prev !== section ? section : prev));
                 break;
               }
             }
@@ -100,7 +102,7 @@ export default function Navbar() {
                 <span className="text-cyan-600 dark:text-cyan-400">.dev</span>
               </span>
               <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono tracking-widest uppercase -mt-1">
-                CLR • Portfolio
+                Curriculum Vitae
               </span>
             </div>
           </a>
@@ -220,14 +222,11 @@ export default function Navbar() {
         )}
       </div>
 
-      {/* Subtle Scroll Progress Bar */}
+      {/* Subtle Scroll Progress Bar (GPU transform) */}
       <div
-        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 transition-all duration-100 ease-out pointer-events-none"
-        style={{ width: `${scrollProgress}%` }}
+        ref={progressBarRef}
+        className="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 origin-left scale-x-0 transition-transform duration-75 ease-out pointer-events-none"
         role="progressbar"
-        aria-valuenow={Math.round(scrollProgress)}
-        aria-valuemin={0}
-        aria-valuemax={100}
         aria-label="Page reading progress"
       />
     </header>

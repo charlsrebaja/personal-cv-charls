@@ -41,20 +41,17 @@ export default function ScrollReveal({
   const elementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    // Respect user's reduced motion preference immediately
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setIsRevealed(true);
-      return;
+    // Respect user's reduced motion preference or missing IntersectionObserver
+    if (
+      typeof window !== "undefined" &&
+      (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window))
+    ) {
+      const rafId = requestAnimationFrame(() => setIsRevealed(true));
+      return () => cancelAnimationFrame(rafId);
     }
 
     const element = elementRef.current;
     if (!element) return;
-
-    // Check if IntersectionObserver is available
-    if (!("IntersectionObserver" in window)) {
-      setIsRevealed(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {

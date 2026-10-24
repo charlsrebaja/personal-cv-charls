@@ -78,7 +78,7 @@ export default function About() {
                   <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">
                     <span className="text-xs text-slate-500 dark:text-slate-400 font-mono block">Current Role</span>
                     <span className="text-sm font-semibold text-slate-900 dark:text-white mt-1 block">
-                      IT Student & Web Developer
+                      IT Student & Full Stack Developer
                     </span>
                   </div>
                   <div className="p-3.5 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200 dark:border-slate-800">

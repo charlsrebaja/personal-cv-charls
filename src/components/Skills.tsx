@@ -10,6 +10,7 @@ import {
   Database,
   Terminal,
 } from "lucide-react";
+import SkillsCircuit from "@/components/SkillsCircuit";
 
 export default function Skills() {
   const getCategoryIcon = (index: number) => {
@@ -28,7 +29,10 @@ export default function Skills() {
   };
 
   return (
-    <section id="skills" className="py-24 relative bg-slate-50/50 dark:bg-[#080d1a] border-t border-slate-200 dark:border-slate-900 transition-colors duration-300">
+    <section id="skills" className="py-24 relative bg-slate-50/50 dark:bg-[#080d1a] border-t border-slate-200 dark:border-slate-900 transition-colors duration-300 overflow-hidden">
+      {/* Background Plain Circuit Lines */}
+      <SkillsCircuit />
+
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
 

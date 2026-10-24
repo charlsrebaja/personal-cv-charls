@@ -130,6 +130,10 @@ export default function Hero() {
                     { name: "Tailwind CSS", domain: "tailwindcss.com" },
                     { name: "Node.js", domain: "nodejs.org" },
                     { name: "PostgreSQL", domain: "postgresql.org" },
+                    { name: "NeonDB", domain: "neon.tech" },
+                    { name: "Supabase", domain: "supabase.com" },
+                    { name: "Prisma ORM", domain: "prisma.io" },
+                    { name: "Cloudinary", domain: "cloudinary.com" },
                   ].map((tech, index) => (
                     <span
                       key={tech.name}

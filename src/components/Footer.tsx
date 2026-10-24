@@ -2,8 +2,9 @@
 
 import { PORTFOLIO_DATA } from "@/data/portfolioData";
 import { ArrowUp, Code2 } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
+import { GithubIcon, FacebookIcon, LinkedinIcon } from "@/components/icons/BrandIcons";
 import ScrollReveal from "@/components/ScrollReveal";
+import FooterCircuit from "@/components/FooterCircuit";
 
 export default function Footer() {
   const currentYear = 2026;
@@ -22,7 +23,10 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-slate-100/80 dark:bg-[#050811] border-t border-slate-200 dark:border-slate-900 py-12 relative transition-colors duration-300">
+    <footer className="bg-slate-100/80 dark:bg-[#050811] border-t border-slate-200 dark:border-slate-900 py-12 relative transition-colors duration-300 overflow-hidden">
+      {/* Background Plain Circuit Lines */}
+      <FooterCircuit />
+
       <ScrollReveal variant="fade-up" delay={50} duration={600}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-200 dark:border-slate-900/80">
@@ -65,6 +69,16 @@ export default function Footer() {
               aria-label="GitHub Profile"
             >
               <GithubIcon className="w-4 h-4" />
+            </a>
+
+            <a
+              href={PORTFOLIO_DATA.personal.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2.5 rounded-xl bg-white hover:bg-slate-50 dark:bg-slate-900 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-500 transition-colors shadow-sm"
+              aria-label="Facebook Profile"
+            >
+              <FacebookIcon className="w-4 h-4" />
             </a>
 
             <a
