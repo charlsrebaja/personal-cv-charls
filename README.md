@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Charls Rebaja - Personal CV & Portfolio Website
 
-## Getting Started
+> Modern, interactive personal portfolio and curriculum vitae showcasing full-stack development projects, technical skills, and educational background.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👤 Student Information
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Student Name:** Charls L. Rebaja
+- **Live Vercel Link:** [https://personal-cv-charls.vercel.app/](https://personal-cv-charls.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📖 Short Description
 
-## Learn More
+A sleek, responsive, and interactive Personal CV & Portfolio web application built for Charls L. Rebaja, a Full Stack Developer. The platform highlights real-world software engineering projects (such as BlueWaste, SK Brgy Mankilam, ProjektMariphil Inc., and CES Travel & Tours), comprehensive technical skill sets across frontend and backend ecosystems, educational background, and contact channels. It features dynamic micro-animations, theme toggling (dark/light mode), interactive project modal views, accessible navigation, and SEO-optimized architecture.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Technologies Used
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Framework:** [Next.js](https://nextjs.org/) (Next.js 16 - App Router)
+- **Frontend Library:** [React](https://react.dev/) (React 19)
+- **Language:** [TypeScript](https://www.typescriptlang.org/)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/) (Tailwind CSS v4)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Iconography:** [Lucide React](https://lucide.dev/) & Custom SVG Brand Icons
+- **Typography:** Geist Sans & Geist Mono (`next/font/google`)
+- **Deployment & Hosting:** [Vercel](https://vercel.com/)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ✨ Key Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Responsive Design:** Fully responsive layout with custom mobile drawer navigation and fluid grid systems.
+- **Dark / Light Theme:** Seamless theme toggle with local storage persistence and anti-FOUC initialization.
+- **Interactive Project Showcase:** In-depth project cards with category filtering, modal deep dives, tech stack badges, and direct links to live demos and repositories.
+- **Rich Motion & Effects:** Circuit hero animation, hover effects, and smooth scroll transitions powered by Framer Motion.
+- **SEO & Accessibility:** Rich Open Graph tags, JSON-LD structured data schema, accessible ARIA labels, and skip-to-content support.
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Ensure you have [Node.js](https://nodejs.org/) (version 18+ or 20+ recommended) and npm installed.
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/charlsrebaja/personal-cv-charls.git
+   cd personal-cv-charls
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+---
+
+## 📦 Available Scripts
+
+- `npm run dev` — Starts the Next.js development server.
+- `npm run build` — Builds the application for production.
+- `npm run start` — Starts the production build server.
+- `npm run lint` — Runs ESLint to check for code quality and syntax issues.
