@@ -105,19 +105,6 @@ body {
   will-change: transform, opacity;
 }
 
-@keyframes float-slow {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.animate-float-slow {
-  animation: float-slow 5s ease-in-out infinite;
-}
-
 /* Animated gradient text flow */
 @keyframes gradient-flow {
   0% {

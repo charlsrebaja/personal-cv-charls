@@ -371,7 +371,7 @@ export default function ProjectCarousel3D({
                         src={project.image}
                         alt={`${project.title} - ${project.subtitle}`}
                         fill
-                        priority
+                        priority={index === 0}
                         unoptimized
                         className="object-cover object-top group-hover/img:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 90vw, (max-width: 1024px) 420px, 480px"

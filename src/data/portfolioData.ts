@@ -57,7 +57,6 @@ export const PORTFOLIO_DATA = {
     initials: "CLR",
     title: "Full Stack Developer",
     avatar: "/projects/profilepic.webp",
-    tagline: "Hi, I'm — a passionate Web Developer.",
     heroTagline: "A dedicated Full-Stack Developer turning innovative ideas into functional and impactful web solutions.",
     aboutBio: [
       "I am an Information Technology student with a deep passion for web development and software engineering. I focus on creating intuitive, responsive, and impactful digital solutions that bridge functional backend architectures with elegant user interfaces.",

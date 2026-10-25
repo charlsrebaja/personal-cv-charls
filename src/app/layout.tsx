@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://charlsrebaja.dev"),
-  title: "Charls Rebaja-Full Stack Developer",
+  title: "Charls L. Rebaja | Full Stack Developer",
   description:
     "Curriculum Vitae and portfolio of Charls L. Rebaja, Full Stack Developer specializing in Next.js, React, TypeScript, and modern web applications.",
   keywords: [
@@ -69,8 +71,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/projects/profilepic.jpg",
-        width: 1200,
-        height: 630,
+        width: 1605,
+        height: 1920,
         alt: "Charls L. Rebaja - Full Stack Developer",
       },
     ],
@@ -81,15 +83,6 @@ export const metadata: Metadata = {
     description:
       "Explore the personal portfolio and featured projects of Charls L. Rebaja, specializing in Next.js, React, and TypeScript.",
     images: ["/projects/profilepic.jpg"],
-  },
-  icons: {
-    icon: [
-      { url: "/favicon.ico" },
-      { url: "/icon.png", sizes: "256x256", type: "image/png" },
-    ],
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
   },
 };
 
@@ -140,9 +133,6 @@ const jsonLd = {
     },
   ],
 };
-
-import { ThemeProvider } from "@/context/ThemeContext";
-import Script from "next/script";
 
 export default function RootLayout({
   children,
